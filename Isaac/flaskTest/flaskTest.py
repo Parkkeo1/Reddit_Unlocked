@@ -1,8 +1,7 @@
 # flaskTest.py
 #
 # -To be used for locally (localhost) testing the web server/website.
-# -Installing the flask package on a virtual environment (instead of system-wide)
-# is recommended by Flask devs.
+# -Installing the flask package on a virtual environment (instead of system-wide) is recommended by Flask devs.
 #
 # http://flask.pocoo.org/docs/0.12/quickstart/#
 #
