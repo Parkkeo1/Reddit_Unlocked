@@ -5,4 +5,7 @@ NOTE: Instead of virtualenv, conda can be used to create virtual environments:
 https://conda.io/docs/user-guide/tasks/manage-environments.html
 https://conda.io/docs/_downloads/conda-cheatsheet.pdf
 
+Also, there is a flaskTest folder inside of a flaskTest folder 
+because that's how the Flask tutorial told me to set it up :)
+
 -Isaac, keonp2
