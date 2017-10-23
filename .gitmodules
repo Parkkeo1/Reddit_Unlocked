@@ -7,3 +7,6 @@
 [submodule "testFolder/RAKE-tutorial"]
 	path = testFolder/RAKE-tutorial
 	url = https://github.com/zelandiya/RAKE-tutorial.git
+[submodule "RAKE-tutorial"]
+	path = RAKE-tutorial
+	url = https://github.com/zelandiya/RAKE-tutorial.git
