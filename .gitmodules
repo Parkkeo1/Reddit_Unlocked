@@ -1,3 +1,9 @@
 [submodule "newspaper"]
 	path = newspaper
 	url = https://github.com/codelucas/newspaper.git
+[submodule "testFolder/newspaper"]
+	path = testFolder/newspaper
+	url = https://github.com/codelucas/newspaper.git
+[submodule "testFolder/RAKE-tutorial"]
+	path = testFolder/RAKE-tutorial
+	url = https://github.com/zelandiya/RAKE-tutorial.git
