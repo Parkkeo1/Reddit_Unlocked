@@ -1,2 +1,11 @@
 # reddit_unlocked
-A program for analyzing data scraped from Reddit.
+A program for analyzing & visualizing data pulled from the Reddit API and scraped from news articles. CS 196 @ Illinois 2017
+
+Pitch Powerpoint: http://bit.ly/2xidFrv
+Goals Checklist/Process Outline: http://bit.ly/2h3Ieex
+
+Duties:
+- RAKE & Newspaper/Keyword Analysis: Ben & Jayam
+- PRAW/Data Management: Isaac
+- PRAW/Data Visualization: Gary
+- Website (in Node.js): Ismail
