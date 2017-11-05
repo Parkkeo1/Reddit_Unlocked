@@ -9,7 +9,7 @@
 # -Isaac Park, keonp2
 #
 
-from flask import Flask
+from flask import Flask, request, render_template
 
 
 app = Flask(__name__)
@@ -17,14 +17,26 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    greeting = 'Welcome to Reddit Unlocked, a CS 196 Project @ UIUC<br/><br/>-Isaac'
-    return greeting
+    return render_template('home.html')
+
+"""
+@app.route('/homeTest', methods=['GET', 'POST'])
+def request_test():
+    if request.method == 'POST':
+        return "You are using POST"
+    else:
+        return "You are probably using GET"
 
 
-@app.route('/docs')
-def docs():
-    report = 'This page will contain an explanation of our project and findings'
-    return report
+@app.route('/docs/<section>')
+def docs(section):
+    return render_template("docs.html", section=section)
+
+
+# testing ints in URL variables
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    return "Post ID is %s" % post_id
 
 
 @app.route('/program')
@@ -35,8 +47,14 @@ def program():
 
 @app.route('/authors')
 def group():
-    members = 'Made by Isaac Park, Jayam Shah, Gary Braznichenko, Ben Vacek, and Keshav Shivam'
+    members = 'Made by Isaac Park, Jayam Shah, Gary Braznichenko, Ben Vacek, Ismail Dayan, and Keshav Shivam'
     return members
+    
+"""
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # Use url_for method for links in the webpage; url_for generates URL
 # based on the argument it is given (name of the function related to a URL.
