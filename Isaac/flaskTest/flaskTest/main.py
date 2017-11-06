@@ -1,4 +1,3 @@
-# flaskTest.py
 #
 # -To be used for locally (localhost) testing the web server/website.
 # -Installing the flask package on a virtual environment (instead of system-wide)
@@ -22,7 +21,27 @@ def index():
 
 @app.route('/docs/<section>')
 def docs(section):
-    return render_template("docs.html", section=section)
+    if section == "findings":
+        return render_template("docs_findings.html")
+    else:
+        if section == "team":
+            return render_template("docs_team.html")
+        else:
+            if section == "tools":
+                return render_template("docs_tools.html")
+            else:
+                return "This docs page does not exist. Maybe it was a typo? <br><br> -Isaac <br><br><a href='/'>Back to Reddit_Unlocked Home</a>"
+                # TODO: if I have time, implement html template for page DNE message
+
+
+@app.route('/program')
+def program():
+    pass
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
 """
 @app.route('/homeTest', methods=['GET', 'POST'])
@@ -36,25 +55,8 @@ def request_test():
 # testing ints in URL variables
 @app.route('/post/<int:post_id>')
 def post(post_id):
-    return "Post ID is %s" % post_id
-
-
-@app.route('/program')
-def program():
-    page = 'This page will contain our Reddit analysis program'
-    return page
-
-
-@app.route('/authors')
-def group():
-    members = 'Made by Isaac Park, Jayam Shah, Gary Braznichenko, Ben Vacek, Ismail Dayan, and Keshav Shivam'
-    return members
-    
+    return "Post ID is %s" % post_id 
 """
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 # Use url_for method for links in the webpage; url_for generates URL
 # based on the argument it is given (name of the function related to a URL.

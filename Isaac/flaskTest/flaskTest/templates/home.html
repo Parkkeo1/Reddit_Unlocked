@@ -1,16 +1,16 @@
 {%  extends 'layout.html' %}
 
+<!-- TODO: implement carousel for idea behind the project for homepage -->
+
 {% block body %}
-    <div class="container px-0">
-        <div class="jumbotron">
+    <div class="container justify-content-sm-start">
+        <div class="jumbotron" style="background-color: #ffffff;">
             <h1 class="text-center">A Reddit-cal Analysis of The Web</h1>
             <hr class="my-3">
             <p class="text-center">...How does the Internet think?</p>
         </div>
-    </div>
-    <div class="container px-4">
         <label for="basic-url">Enter a subreddit name to find out!</label>
-        <div class="input-group input-group-lg">
+        <div class="input-group input-group-lg" style="background-color: #ffffff;">
             <span class="input-group-addon" id="basic-addon3">https://www.reddit.com/r/</span>
             <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
             <span class="input-group-btn">
@@ -18,4 +18,4 @@
             </span>
         </div>
     </div>
-{%  endblock %}
+{% endblock %}
