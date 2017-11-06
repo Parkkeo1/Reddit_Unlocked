@@ -19,6 +19,11 @@ app = Flask(__name__)
 def index():
     return render_template('home.html')
 
+
+@app.route('/docs/<section>')
+def docs(section):
+    return render_template("docs.html", section=section)
+
 """
 @app.route('/homeTest', methods=['GET', 'POST'])
 def request_test():
@@ -26,11 +31,6 @@ def request_test():
         return "You are using POST"
     else:
         return "You are probably using GET"
-
-
-@app.route('/docs/<section>')
-def docs(section):
-    return render_template("docs.html", section=section)
 
 
 # testing ints in URL variables

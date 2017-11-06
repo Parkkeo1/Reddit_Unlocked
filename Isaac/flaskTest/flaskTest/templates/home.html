@@ -1,5 +1,21 @@
 {%  extends 'layout.html' %}
 
 {% block body %}
-    This took me too long to make fam
+    <div class="container px-0">
+        <div class="jumbotron">
+            <h1 class="text-center">A Reddit-cal Analysis of The Web</h1>
+            <hr class="my-3">
+            <p class="text-center">...How does the Internet think?</p>
+        </div>
+    </div>
+    <div class="container px-4">
+        <label for="basic-url">Enter a subreddit name to find out!</label>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon3">https://www.reddit.com/r/</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Run Trend Analysis</button>
+            </span>
+        </div>
+    </div>
 {%  endblock %}
