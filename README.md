@@ -8,4 +8,4 @@ Duties:
 - RAKE & Newspaper/Keyword Analysis: Ben & Jayam
 - PRAW/Data Management: Isaac
 - PRAW/Data Visualization: Gary
-- Website (in Node.js): Ismail
+- Website (Flask/HTML/CSS/Bootstrap): Isaac & Ismail
