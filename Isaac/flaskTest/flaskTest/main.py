@@ -8,15 +8,28 @@
 # -Isaac Park, keonp2
 #
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
+from run_praw import run_praw
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
+output = run_praw(None)
+
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('home.html')
+    if request.method == 'POST':
+        if 'basic-url' in request.form:
+            name = request.form['basic-url']
+            output = run_praw(name)  # TODO: Implement loading page cuz this takes too long fam
+            return redirect(url_for('program', name=name))
+        else:
+            return render_template('home.html')
+            # TODO: Implement subreddit input validity checking AKA Fix blank input error
+    else:
+        return render_template('home.html')
 
 
 @app.route('/docs/<section>')
@@ -34,9 +47,9 @@ def docs(section):
                 # TODO: if I have time, implement html template for page DNE message
 
 
-@app.route('/program')
-def program():
-    pass
+@app.route('/program/<name>')
+def program(name):
+    return render_template('program.html', name=name, output=output)
 
 
 if __name__ == "__main__":
@@ -44,14 +57,6 @@ if __name__ == "__main__":
 
 
 """
-@app.route('/homeTest', methods=['GET', 'POST'])
-def request_test():
-    if request.method == 'POST':
-        return "You are using POST"
-    else:
-        return "You are probably using GET"
-
-
 # testing ints in URL variables
 @app.route('/post/<int:post_id>')
 def post(post_id):

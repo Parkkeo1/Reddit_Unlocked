@@ -1,6 +1,7 @@
 {%  extends 'layout.html' %}
 
 <!-- TODO: implement actual slide images into carousel -->
+<!-- TODO: improve site layout -->
 
 {% block body %}
     <div class="container justify-content-sm-start ">
@@ -43,13 +44,15 @@
         </div>
     </div>
     <div class="container justify-content-sm-start py-5">
-        <label for="basic-url">Enter a subreddit name to find out!</label>
-        <div class="input-group input-group-lg" style="background-color: #ffffff;">
-            <span class="input-group-addon" id="basic-addon3">https://www.reddit.com/r/</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Run Trend Analysis</button>
-            </span>
-        </div>
+        <form role="form" method="POST" action=''/program'>
+            <label for="basic-url">Enter a subreddit name to find out! Pulling live data from reddit takes a while (depending on number of threads analyzed).</label>
+            <div class="input-group input-group-lg" style="background-color: #ffffff;">
+                <span class="input-group-addon" id="basic-addon3">https://www.reddit.com/r/</span>
+                <input type="text" class="form-control" name="basic-url" aria-describedby="basic-addon3">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" >Run Trend Analysis</button>
+                </span>
+            </div>
+        </form>
     </div>
 {% endblock %}
