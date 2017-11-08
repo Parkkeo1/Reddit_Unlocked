@@ -52,6 +52,11 @@ def program(name):
     return render_template('program.html', name=name, output=output)
 
 
+@app.route('/examples')
+def examples():
+    return render_template('examples.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

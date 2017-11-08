@@ -12,6 +12,13 @@
         </div>
     </div>
     <div class="container justify-content-sm-start py-4">
+        <div class="alert alert-secondary pb-0 pt-3" role="alert">
+            <h4 class="alert-heading">What is Reddit_Unlocked?</h4>
+            <hr>
+            <p>Reddit_Unlocked is a program based primarily on Python that analyzes & visualizes data pulled from the Reddit API and scraped from news articles. Our program implements various libraries, such as Newspaper and PRAW, to gather insight about the popular types of content and trends on Reddit.</p>
+            <hr>
+            <p>For some insight on why we decided to pursue this project, here are our initial pitch slides.</p>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide" style="background-color: #FF5700;" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -45,7 +52,7 @@
     </div>
     <div class="container justify-content-sm-start py-5">
         <form role="form" method="POST" action=''/program'>
-            <label for="basic-url">Enter a subreddit name to find out! Pulling live data from reddit takes a while (depending on number of threads analyzed).</label>
+            <label for="basic-url">Enter a subreddit name to begin! Pulling live data from reddit takes a while (depending on number of threads analyzed).</label>
             <div class="input-group input-group-lg" style="background-color: #ffffff;">
                 <span class="input-group-addon" id="basic-addon3">https://www.reddit.com/r/</span>
                 <input type="text" class="form-control" name="basic-url" aria-describedby="basic-addon3">
@@ -53,6 +60,6 @@
                     <button type="submit" class="btn btn-primary" >Run Trend Analysis</button>
                 </span>
             </div>
-        </form>
+        </form> <!-- TODO: implement more buttons at bottom for different features of the program -->
     </div>
 {% endblock %}

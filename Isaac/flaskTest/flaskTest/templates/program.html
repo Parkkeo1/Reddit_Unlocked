@@ -4,5 +4,12 @@
 <!-- TODO: Things to display on page that I can think of rn: DataFrame, Graphs, Link to subreddit -->
 
 {% block body %}
-    <h1>the subreddit that was requested is {{ name }}</h1>
+    <div class="container justify-content-sm-start ">
+        <div class="jumbotron pt-5 pb-0" style="background-color: #ffffff;">
+            <h2 class="text-center">You chose to analyze /r/{{ name }}. Here are the results.</h2>
+            <hr class="my-3 bg-secondary">
+            <p class="text-center">Have a look at what's popular and trending in this section of the internet!</p>
+        </div>
+        <!-- TODO: implement another praw py function to pull statistics about the subreddit (sub count, years active, growth, etc) -->
+    </div>
 {% endblock %}
