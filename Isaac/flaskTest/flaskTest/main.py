@@ -8,14 +8,13 @@
 # -Isaac Park, keonp2
 #
 
-from flask import Flask, request, render_template, redirect, url_for
+
+from flask import Flask, request, render_template, redirect, url_for, session
 from run_praw import run_praw
 
 
 app = Flask(__name__)
-
-
-output = run_praw(None)
+app.config['SECRET_KEY'] = '\x00\xe3~\xa1\xfc.2\x86\xc8\xb1J\xd9\x8e@2\xaf\xcb\x99\x86\xce\xed\x0b\xc8\xe0'
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,7 +22,8 @@ def index():
     if request.method == 'POST':
         if 'basic-url' in request.form:
             name = request.form['basic-url']
-            output = run_praw(name)  # TODO: Implement loading page cuz this takes too long fam
+            output = run_praw(name)
+            session['output'] = output
             return redirect(url_for('program', name=name))
         else:
             return render_template('home.html')
@@ -49,6 +49,7 @@ def docs(section):
 
 @app.route('/program/<name>')
 def program(name):
+    output = session.get('output')
     return render_template('program.html', name=name, output=output)
 
 

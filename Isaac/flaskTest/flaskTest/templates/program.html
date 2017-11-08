@@ -10,6 +10,33 @@
             <hr class="my-3 bg-secondary">
             <p class="text-center">Have a look at what's popular and trending in this section of the internet!</p>
         </div>
-        <!-- TODO: implement another praw py function to pull statistics about the subreddit (sub count, years active, growth, etc) -->
+    </div>
+    <div class="container justify-content-sm-start">
+        <table class="table">
+          <thead class="thead-dark bg-primary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">URL</th>
+              <th scope="col">Upvote %</th>
+              <th scope="col">Net Score</th>
+              <th scope="col">Date Posted</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in output %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td>{{ entry['Title'] }}</td>
+              <td>{{ entry['URL'] }}</td>
+              <td>{{ entry['Upvote Ratio (%)'] }}</td>
+              <td>{{ entry['Net Score'] }}</td>
+              <td>{{ entry['Post Date'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
     </div>
 {% endblock %}
+
+<!-- TODO: implement another praw py function to pull statistics about the subreddit (sub count, years active, growth, etc) -->
