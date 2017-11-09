@@ -4,34 +4,36 @@
 <!-- TODO: Things to display on page that I can think of rn: DataFrame, Graphs, Link to subreddit -->
 
 {% block body %}
+    {% set ellip = "..." %}
     <div class="container justify-content-sm-start ">
         <div class="jumbotron pt-5 pb-0" style="background-color: #ffffff;">
             <h2 class="text-center">You chose to analyze /r/{{ name }}. Here are the results.</h2>
-            <hr class="my-3 bg-secondary">
+            <hr style="background-color: #FF5700;">
             <p class="text-center">Have a look at what's popular and trending in this section of the internet!</p>
         </div>
     </div>
     <div class="container justify-content-sm-start">
-        <table class="table">
-          <thead class="thead-dark bg-primary">
+        <table class="table table-hover">
+          <caption>The top 10 threads from /r/{{ name }} in the past year. Click on the URLs to see what made them popular.</caption>
+          <thead class="thead text-white" style="background-color: #FF5700;">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">URL</th>
-              <th scope="col">Upvote %</th>
-              <th scope="col">Net Score</th>
-              <th scope="col">Date Posted</th>
+              <th class="text-center align-middle" scope="col">#</th>
+              <th class="text-center align-middle" scope="col">Title</th>
+              <th class="text-center align-middle" scope="col">URL</th>
+              <th class="text-center align-middle" scope="col">Upvote %</th>
+              <th class="text-center align-middle" scope="col">Net Score</th>
+              <th class="text-center align-middle" scope="col">Date Posted</th>
             </tr>
           </thead>
           <tbody>
-            {% for entry in output %}
+            {% for entry in output[0:10] %}
             <tr>
-              <th scope="row">{{ loop.index }}</th>
-              <td>{{ entry['Title'] }}</td>
-              <td>{{ entry['URL'] }}</td>
-              <td>{{ entry['Upvote Ratio (%)'] }}</td>
-              <td>{{ entry['Net Score'] }}</td>
-              <td>{{ entry['Post Date'] }}</td>
+              <th class="text-center align-middle" scope="row">{{ loop.index }}</th>
+              <td class="align-middle">{{ (entry['Title'][0:30]) + ellip }}</td>
+              <td class="align-middle"><a class="btn btn-primary btn-sm" href={{ entry['URL'] }}>{{ (entry['URL'][8:40]) + ellip }}</a></td>
+              <td class="align-middle">{{ entry['Upvote Ratio (%)'] }}</td>
+              <td class="align-middle">{{ entry['Net Score'] }}</td>
+              <td class="align-middle">{{ entry['Post Date'] }}</td>
             </tr>
             {% endfor %}
           </tbody>

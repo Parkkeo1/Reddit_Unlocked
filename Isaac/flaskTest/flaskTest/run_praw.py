@@ -29,7 +29,7 @@ def run_praw(name):
     threads_df = threads_df[['Title', 'URL', 'Upvote Ratio (%)', 'Net Score', '# of Upvotes', '# of Downvotes',
                              'Post Date', 'Self Post?', 'Video Post?']]
 
-    for thread in subreddit.top('year', limit=5):
+    for thread in subreddit.top('year', limit=15): # TODO: change limit number when actually deploying program. 15 is the testing number.
         actualUps = int((thread.upvote_ratio * thread.score) / (thread.upvote_ratio * 2 - 1))
         actualDowns = actualUps - thread.score
         #if isinstance(str(datetime.utcfromtimestamp(thread.created_utc)), str):
