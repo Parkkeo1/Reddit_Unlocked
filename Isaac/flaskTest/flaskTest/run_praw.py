@@ -3,9 +3,9 @@ import pandas as pd
 from datetime import datetime
 
 
-# TODO: Make this program faster!
+# TODO: Make this program faster! (a lot faster, this is way too slow)
 
-def run_praw(name):
+def display_praw(name):
     reddit = praw.Reddit(client_id='Pj5o8QpNXXJY9A',
                          client_secret='pQKMRBmhp0In48NoNvvktfRo2eA',
                          password='prawisgreat',
@@ -32,13 +32,6 @@ def run_praw(name):
     for thread in subreddit.top('year', limit=15): # TODO: change limit number when actually deploying program. 15 is the testing number.
         actualUps = int((thread.upvote_ratio * thread.score) / (thread.upvote_ratio * 2 - 1))
         actualDowns = actualUps - thread.score
-        #if isinstance(str(datetime.utcfromtimestamp(thread.created_utc)), str):
-        #    limitDate = (str(datetime.utcfromtimestamp(thread.created_utc)))[:10]
-        #    newDate = limitDate.replace('-', ' ')
-        #    time = datetime.strptime(newDate, '%Y %m %d')
-        #    formatTime = time.strftime('%b %d, %Y')
-        #else:
-        #    formatTime = None
         gather = pd.Series([thread.title, thread.url, thread.upvote_ratio * 100, thread.score,
                             actualUps, actualDowns, thread.created_utc,
                             thread.is_self, thread.is_video],
@@ -46,4 +39,24 @@ def run_praw(name):
                                   'Post Date', 'Self Post?', 'Video Post?'])
         threads_df = threads_df.append(gather, ignore_index=True)
 
-    return threads_df.to_dict(orient='records')
+    threads_dict = threads_df.to_dict(orient='records')
+
+    for entry in threads_dict:
+        if isinstance(str(entry['Post Date']), str):
+            time = datetime.fromtimestamp(entry['Post Date'])
+            formatTime = time.strftime('%b %d, %Y')
+        else:
+            formatTime = None
+
+        entry['Post Date'] = formatTime
+
+    return threads_dict
+
+def stats_praw(name):
+    reddit = praw.Reddit(client_id='Pj5o8QpNXXJY9A',
+                         client_secret='pQKMRBmhp0In48NoNvvktfRo2eA',
+                         password='prawisgreat',
+                         user_agent='Reddit Unlocked CS196 Project @ UIUC',
+                         username='RedditUnlocked196')
+
+    subreddit = reddit.subreddit(name)

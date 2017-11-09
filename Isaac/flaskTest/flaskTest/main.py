@@ -10,7 +10,7 @@
 
 
 from flask import Flask, request, render_template, redirect, url_for, session
-from run_praw import run_praw
+from run_praw import display_praw
 
 
 app = Flask(__name__)
@@ -22,7 +22,7 @@ def index():
     if request.method == 'POST':
         if 'basic-url' in request.form:
             name = request.form['basic-url']
-            output = run_praw(name)
+            output = display_praw(name)
             session['output'] = output
             return redirect(url_for('program', name=name))
         else:
