@@ -1,6 +1,7 @@
 import praw
 import pandas as pd
 from datetime import datetime
+import json
 
 
 # TODO: Make this program faster! (a lot faster, this is way too slow)
@@ -52,6 +53,7 @@ def display_praw(name):
 
     return threads_dict
 
+
 def stats_praw(name):
     reddit = praw.Reddit(client_id='Pj5o8QpNXXJY9A',
                          client_secret='pQKMRBmhp0In48NoNvvktfRo2eA',
@@ -59,4 +61,13 @@ def stats_praw(name):
                          user_agent='Reddit Unlocked CS196 Project @ UIUC',
                          username='RedditUnlocked196')
 
-    subreddit = reddit.subreddit(name)
+    info = reddit.request('GET', '/r/' + name + '/about.json')
+
+    infoDict = {}
+
+    infoDict['Current Users'] = info['data']['active_user_count']
+    infoDict['Creation Date'] = (datetime.fromtimestamp(info['data']['created_utc'])).strftime('%b %d, %Y')
+    infoDict['Subscriber Count'] = info['data']['subscribers']
+    infoDict['Title'] = info['data']['title']
+
+    return infoDict
