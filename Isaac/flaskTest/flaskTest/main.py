@@ -65,13 +65,6 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-"""
-# testing ints in URL variables
-@app.route('/post/<int:post_id>')
-def post(post_id):
-    return "Post ID is %s" % post_id 
-"""
-
 # Use url_for method for links in the webpage; url_for generates URL
 # based on the argument it is given (name of the function related to a URL.
 #

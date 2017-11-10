@@ -1,7 +1,6 @@
 import praw
 import pandas as pd
 from datetime import datetime
-import json
 
 
 # TODO: Make this program faster! (a lot faster, this is way too slow)
@@ -69,5 +68,6 @@ def stats_praw(name):
     infoDict['Creation Date'] = (datetime.fromtimestamp(info['data']['created_utc'])).strftime('%b %d, %Y')
     infoDict['Subscriber Count'] = info['data']['subscribers']
     infoDict['Title'] = info['data']['title']
+    infoDict['Icon'] = info['data']['icon_img']
 
     return infoDict

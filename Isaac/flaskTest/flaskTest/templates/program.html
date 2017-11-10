@@ -13,6 +13,27 @@
         </div>
     </div> <!-- TODO: implement subreddit stats text bubble/table. Include button to subreddit page. -->
     <div class="container justify-content-sm-start">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card my-5">
+                    <div class="card-header">
+                        Background statistics for /r/{{ name }}
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ info['Title'] }}</h4>
+                        <p class="card-text my-2">Created: {{ info['Creation Date'] }}</p>
+                        <p class="card-text my-2">Subscriber Count: {{ info['Subscriber Count'] }}</p>
+                        <p class="card-text mt-2 mb-3">Currently Active Users: {{ info['Current Users'] }}</p>
+                        <a href="https://www.reddit.com/r/{{ name }}" class="btn btn-primary">Visit /r/{{ name }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 my-5 ml-4 d-flex align-items-center">
+                <img src="{{ info['Icon'] }}" class="img-rounded">
+            </div>
+        </div>
+    </div>
+    <div class="container justify-content-sm-start">
         <table class="table table-hover">
           <caption>The top 10 threads from /r/{{ name }} in the past year, sorted by net score. Click on the URLs to see what made them popular.</caption>
           <thead class="thead text-white" style="background-color: #FF5700;">
