@@ -1,6 +1,5 @@
 {%  extends 'layout.html' %}
 
-<!-- TODO: implement actual slide images into carousel -->
 <!-- TODO: improve site layout -->
 
 {% block body %}
@@ -18,7 +17,7 @@
             <p>Reddit_Unlocked is a program based primarily on Python that analyzes & visualizes data pulled from the Reddit API and scraped from news articles. Our program implements various libraries, such as Newspaper and PRAW, to gather insight about the popular types of content and trends on Reddit.</p>
             <p>For some insight on why we decided to pursue this project, here are the slides for our original project pitch.</p>
         </div>
-        <div id="carouselExampleIndicators" class="carousel slide" style="background-color: #FF5700;" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" style="background-color: #FF5700;" data-ride="carousel" data-interval="7500">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -59,6 +58,6 @@
                     <button type="submit" class="btn btn-primary" >Run Trend Analysis</button>
                 </span>
             </div>
-        </form> <!-- TODO: implement more buttons at bottom for different features of the program -->
+        </form> <!-- TODO: implement more buttons at bottom for different features/types of the program -->
     </div>
 {% endblock %}

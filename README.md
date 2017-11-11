@@ -5,7 +5,7 @@ Pitch Powerpoint: http://bit.ly/2xidFrv
 Goals Checklist/Process Outline: http://bit.ly/2h3Ieex
 
 Duties:
-- RAKE & Newspaper/Keyword Analysis: Ben & Jayam
+- RAKE & Newspaper/Keyword Analysis: Ben & Jayam, Keshav
 - PRAW/Data Management: Isaac
 - PRAW/Data Visualization: Gary
-- Website (Flask/HTML/CSS/Bootstrap): Isaac, Keshav, Ismail
+- Website (Flask/HTML/CSS/Bootstrap): Isaac, Ismail
