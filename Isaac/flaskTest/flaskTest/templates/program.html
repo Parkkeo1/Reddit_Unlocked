@@ -15,7 +15,7 @@
     <div class="container justify-content-sm-start">
         <div class="row">
             <div class="col-sm-8">
-                <div class="card my-5">
+                <div class="card my-4">
                     <div class="card-header">
                         Background statistics for /r/{{ name }}
                     </div>
@@ -28,13 +28,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2 my-5 ml-4 d-flex align-items-center">
+            <div class="col-sm-2 my-3 ml-4 d-flex align-items-center">
                 <img src="{{ info['Icon'] }}" class="img-rounded">
             </div>
         </div>
     </div>
     <div class="container justify-content-sm-start">
-        <table class="table table-hover">
+        <table class="table table-hover mt-5">
           <caption>The top 10 threads from /r/{{ name }} in the past year, sorted by net score. Click on the URLs to see what made them popular.</caption>
           <thead class="thead text-white" style="background-color: #FF5700;">
             <tr>
@@ -52,9 +52,9 @@
               <th class="text-center align-middle" scope="row">{{ loop.index }}</th>
               <td class="align-middle">{{ (entry['Title'][0:30]) + ellip }}</td>
               <td class="align-middle"><a class="btn btn-primary btn-sm" href={{ entry['URL'] }}>{{ (entry['URL'][8:40]) + ellip }}</a></td>
-              <td class="align-middle">{{ entry['Upvote Ratio (%)'] }}</td>
-              <td class="align-middle">{{ entry['Net Score'] }}</td>
-              <td class="align-middle">{{ entry['Post Date'] }}</td>
+              <td class="text-center align-middle">{{ entry['Upvote Ratio (%)'] }}</td>
+              <td class="text-center align-middle">{{ entry['Net Score'] }}</td>
+              <td class="text-center align-middle">{{ entry['Post Date'] }}</td>
             </tr>
             {% endfor %}
           </tbody>
