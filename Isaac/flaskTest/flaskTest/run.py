@@ -160,6 +160,7 @@ rake_object = rake.Rake("SmartStoplist.txt", 1, 2, 1)
 from textblob import TextBlob, Word, Blobber
 import newspaper
 from newspaper import Article
+import numpy as np
 
 def get_keyword_dict(input_dict):
     # Transforms dict returned by display_praw into DataFrame for working with
