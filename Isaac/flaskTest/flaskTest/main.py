@@ -10,7 +10,7 @@
 
 
 from flask import Flask, request, render_template, redirect, url_for, session
-from run import display_praw, stats_praw, body_to_graph
+from run import display_praw, stats_praw, body_to_graph, get_keyword_dict
 
 
 app = Flask(__name__)
@@ -24,8 +24,11 @@ def index():
             name = request.form['basic-url']
             info = stats_praw(name)
             output = display_praw(name)
+            keywords = get_keyword_dict(output)
+            graph_url = body_to_graph(keywords)
             session['info'] = info
             session['output'] = output
+            session['graph_url'] = graph_url
             return redirect(url_for('program', name=name))
         else:
             return render_template('home.html')
@@ -53,7 +56,8 @@ def docs(section):
 def program(name):
     output = session.get('output')
     info = session.get('info')
-    return render_template('program.html', name=name, output=output, info=info)
+    graph_url = session.get('graph_url')
+    return render_template('program.html', name=name, output=output, info=info, graph_url=graph_url)
 
 
 @app.route('/examples')

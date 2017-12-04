@@ -161,9 +161,9 @@ from textblob import TextBlob, Word, Blobber
 import newspaper
 from newspaper import Article
 
-def get_keyword_dict():
+def get_keyword_dict(input_dict):
     # Transforms dict returned by display_praw into DataFrame for working with
-    top10news_df = pd.DataFrame.from_dict(display_praw('news'))
+    top10news_df = pd.DataFrame.from_dict(input_dict)
 
     words = {}
 
