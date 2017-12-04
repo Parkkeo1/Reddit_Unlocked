@@ -31,6 +31,10 @@ def display_praw(name):
                              'Post Date', 'Self Post?', 'Video Post?', 'Domain']]
 
     for thread in subreddit.top('year', limit=15): # TODO: change limit number when actually deploying program. 15 is the testing number.
+        if thread.is_video:
+            continue
+        if 'fb' in thread.url:
+            continue
         actualUps = int((thread.upvote_ratio * thread.score) / (thread.upvote_ratio * 2 - 1))
         actualDowns = actualUps - thread.score
         gather = pd.Series([thread.title, thread.url, thread.upvote_ratio * 100, thread.score,
@@ -38,6 +42,7 @@ def display_praw(name):
                             thread.is_self, thread.is_video, thread.domain],
                            index=['Title', 'URL', 'Upvote Ratio (%)', 'Net Score', '# of Upvotes', '# of Downvotes',
                                   'Post Date', 'Self Post?', 'Video Post?', 'Domain'])
+
         threads_df = threads_df.append(gather, ignore_index=True)
 
     threads_dict = threads_df.to_dict(orient='records')
@@ -173,6 +178,7 @@ def get_keyword_dict(input_dict):
     # Get keywords out of all articles
     for i in range(len(top10news_df)):
         #top10news_df.iloc[i]['url']
+        print(top10news_df.iloc[i]['URL'])
         myArticle = Article(top10news_df.iloc[i]['URL'])
         myArticle.download()
         myArticle.parse()
