@@ -3,9 +3,6 @@ plotly.tools.set_credentials_file(username='reddit_unlocked', api_key='gfnXKc7Jv
 import plotly.plotly as py
 import plotly.graph_objs as go
 from plotly.graph_objs import *
-import pandas as pd
-
-
 #takes a dictionary of dictionaries of keywords from body text as input and returns the url for the plotly html embedding of
 #scatterplot made from the keywords and their attributes
 #'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
@@ -34,21 +31,36 @@ def body_to_graph(words = {}, subreddit = str):
     layout = go.Layout(
         annotations=Annotations([
             Annotation(
-                x=0.5004254919715793,
-                y=-0.16191064079952971,
+                x=0.5,
+                y=-0.123,
                 showarrow=False,
-                text='Custom x-axis title',
+                text='(Occurrences * Score)',
                 xref='paper',
                 yref='paper'
             ),
             Annotation(
-                x=-0.04944728761514841,
-                y=0.4714285714285711,
+                x=1.055,
+                y=0.5,
                 showarrow=False,
-                text='Custom y-axis title',
+                text='Text Polarity',
                 textangle=-90,
                 xref='paper',
                 yref='paper'
+            ),
+            Annotation(
+                x=.01,
+                y=1,
+                showarrow=False,
+                text='Size = Occurrences',
+                textangle=0,
+                xref='paper',
+                yref='paper',
+                bordercolor = '#1f77b4',
+                font=dict(
+                    family='Courier New, monospace',
+                    size=16,
+                    color='#ff7f0e'
+                )
             )
         ]),
         title = 'Stats of top reddit/r/' + subreddit + ' keywords',
