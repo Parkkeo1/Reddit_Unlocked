@@ -82,7 +82,6 @@ from plotly.graph_objs import *
 #scatterplot made from the keywords and their attributes
 #'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
 
-
 def body_to_graph(words = {}, subreddit = str):
     """
     :type subreddit: String
@@ -154,3 +153,95 @@ def body_to_graph(words = {}, subreddit = str):
     fig = go.Figure(data = data, layout = layout)
     url = py.plot(fig, filename = 'reddit plot')
     return "" + url
+
+import operator
+import rake as rake
+rake_object = rake.Rake("SmartStoplist.txt", 1, 2, 1)
+from textblob import TextBlob, Word, Blobber
+import newspaper
+from newspaper import Article
+
+def get_keyword_dict():
+    # Transforms dict returned by display_praw into DataFrame for working with
+    top10news_df = pd.DataFrame.from_dict(display_praw('news'))
+
+    words = {}
+
+    ## NEWSPAPER STUFF HERE ##
+
+    # Get keywords out of all articles
+    for i in range(len(top10news_df)):
+        #top10news_df.iloc[i]['url']
+        myArticle = Article(top10news_df.iloc[i]['URL'])
+        myArticle.download()
+        myArticle.parse()
+        myArticle.nlp()
+
+        # Run sentiment analysis on each article, fetch subjectivity and polarity
+        text = myArticle.text
+        blob = TextBlob(text)
+        polarity = blob.sentiment.polarity
+        subjectivity = blob.sentiment.subjectivity
+
+        # Get associated Reddit post info for each keyword, store in dictionary
+        for keyword in myArticle.keywords:
+
+            # Don't waste time with numeric keywords, skip them if they contain numbers
+            if any(char.isdigit() for char in keyword):
+                continue        
+
+            if keyword not in words:
+                words[keyword] = [keyword, 1, 
+                                  top10news_df.iloc[i]['# of Upvotes'],
+                                  top10news_df.iloc[i]["# of Downvotes"], 
+                                  top10news_df.iloc[i]["Net Score"],
+                                  subjectivity, polarity, 
+                                  {(top10news_df.iloc[i]["Domain"]):1}]
+            else:
+                words[keyword][1] += 1
+                words[keyword][2] += top10news_df.iloc[i]['# of Upvotes']
+                words[currentWord][3] += int(top10news_df.iloc[i]['# of Downvotes'])
+                words[currentWord][4] += int(top10news_df.iloc[i]['Net Score'])
+                words[currentWord][5] = np.mean([subjectivity, words[currentWord][5]])
+                words[currentWord][6] = np.mean([polarity, words[currentWord][6]])
+                if top10news_df.iloc[i]["Domain"] in words[currentWord][7]:
+                    words[currentWord][7][(top10news_df.iloc[i]["Domain"])] += 1
+                else:
+                    words[currentWord][7][top10news_df.iloc[i]["Domain"]] = 1
+
+        ## RAKE STUFF HERE ##
+
+        # Pull keywords from title strings
+        for wordPair in rake_object.run(top10news_df.iloc[i]['Title']):
+            currentWord = wordPair[0]
+
+            # Don't waste time with numeric keywords, skip them if they contain numbers
+            if any(char.isdigit() for char in currentWord):
+                continue
+
+            # Grab associated Reddit post data for each keyword, store in dictionary
+            if currentWord not in words:
+                words[currentWord] = [currentWord, 1, 
+                                  top10news_df.iloc[i]['# of Upvotes'],
+                                  top10news_df.iloc[i]["# of Downvotes"], 
+                                  top10news_df.iloc[i]["Net Score"],
+                                  subjectivity, polarity, 
+                                  {(top10news_df.iloc[i]["Domain"]):1}]
+            else:
+                words[currentWord][1] += 1
+                words[currentWord][2] += int(top10news_df.iloc[i]['# of Upvotes'])
+                words[currentWord][3] += int(top10news_df.iloc[i]['# of Downvotes'])
+                words[currentWord][4] += int(top10news_df.iloc[i]['Net Score'])
+                if top10news_df.iloc[i]["Domain"] in words[currentWord][7]:
+                    words[currentWord][7][(top10news_df.iloc[i]["Domain"])] += 1
+                else:
+                    words[currentWord][7][top10news_df.iloc[i]["Domain"]] = 1
+
+
+    ### FOR GARY'S USE ###
+    # Output dictionary is named 'words' #
+    # Format is as such: #
+    # key = keyword #
+    # value = [Occurences, Upvotes, Downvotes, Score, Subjectivity, Polarity, Domain Dictionary] #
+    
+    return words
