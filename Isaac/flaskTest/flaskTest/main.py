@@ -10,7 +10,7 @@
 
 
 from flask import Flask, request, render_template, redirect, url_for, session
-from run_praw import display_praw, stats_praw
+from run import display_praw, stats_praw, body_to_graph
 
 
 app = Flask(__name__)

@@ -81,6 +81,8 @@ from plotly.graph_objs import *
 #takes a dictionary of dictionaries of keywords from body text as input and returns the url for the plotly html embedding of
 #scatterplot made from the keywords and their attributes
 #'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
+
+
 def body_to_graph(words = {}, subreddit = str):
     """
     :type subreddit: String
