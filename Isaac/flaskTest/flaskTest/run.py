@@ -177,11 +177,19 @@ def get_keyword_dict(input_dict):
 
     # Get keywords out of all articles
     for i in range(len(top10news_df)):
-        #top10news_df.iloc[i]['url']
-        print(top10news_df.iloc[i]['URL'])
+        if "self" in top10news_df.iloc[i]["Domain"]:
+            continue
+        else if "youtube" in top10news_df.iloc[i]["Domain"]:
+            continue
+        else if "imgur" in top10news_df.iloc[i]["Domain"]:
+            continue
+
         myArticle = Article(top10news_df.iloc[i]['URL'])
-        myArticle.download()
-        myArticle.parse()
+        try:
+            myArticle.download()
+            myArticle.parse()
+        except:
+            continue
         myArticle.nlp()
 
         # Run sentiment analysis on each article, fetch subjectivity and polarity
@@ -196,7 +204,8 @@ def get_keyword_dict(input_dict):
             # Don't waste time with numeric keywords, skip them if they contain numbers
             if any(char.isdigit() for char in keyword):
                 continue        
-
+                
+                
             if keyword not in words:
                 words[keyword] = [keyword, 1, 
                                   top10news_df.iloc[i]['# of Upvotes'],
@@ -207,14 +216,14 @@ def get_keyword_dict(input_dict):
             else:
                 words[keyword][1] += 1
                 words[keyword][2] += top10news_df.iloc[i]['# of Upvotes']
-                words[currentWord][3] += int(top10news_df.iloc[i]['# of Downvotes'])
-                words[currentWord][4] += int(top10news_df.iloc[i]['Net Score'])
-                words[currentWord][5] = np.mean([subjectivity, words[currentWord][5]])
-                words[currentWord][6] = np.mean([polarity, words[currentWord][6]])
-                if top10news_df.iloc[i]["Domain"] in words[currentWord][7]:
-                    words[currentWord][7][(top10news_df.iloc[i]["Domain"])] += 1
+                words[keyword][3] += int(top10news_df.iloc[i]['# of Downvotes'])
+                words[keyword][4] += int(top10news_df.iloc[i]['Net Score'])
+                words[keyword][5] = np.mean([subjectivity, words[keyword][5]])
+                words[keyword][6] = np.mean([polarity, words[keyword][6]])
+                if top10news_df.iloc[i]["Domain"] in words[keyword][7]:
+                    words[keyword][7][(top10news_df.iloc[i]["Domain"])] += 1
                 else:
-                    words[currentWord][7][top10news_df.iloc[i]["Domain"]] = 1
+                    words[keyword][7][top10news_df.iloc[i]["Domain"]] = 1
 
         ## RAKE STUFF HERE ##
 
