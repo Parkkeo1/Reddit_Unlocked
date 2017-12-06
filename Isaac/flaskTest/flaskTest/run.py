@@ -30,12 +30,12 @@ def display_praw(name):
     threads_df = threads_df[['Title', 'URL', 'Upvote Ratio (%)', 'Net Score', '# of Upvotes', '# of Downvotes',
                              'Post Date', 'Self Post?', 'Video Post?', 'Domain']]
 
-    for thread in subreddit.hot(limit=5): # TODO: change limit number when actually deploying program. 15 is the testing number.
+    for thread in subreddit.top('week', limit=100): # TODO: change limit number when actually deploying program. 15 is the testing number.
         if thread.is_video:
             continue
         if 'fb' in thread.url:
             continue
-        actualUps = int((thread.upvote_ratio * thread.score) / (thread.upvote_ratio * 2 - 1))
+        actualUps = float(thread.upvote_ratio * thread.score) / float(thread.upvote_ratio * 2 - 1)
         actualDowns = actualUps - thread.score
         gather = pd.Series([thread.title, thread.url, thread.upvote_ratio * 100, thread.score,
                             actualUps, actualDowns, thread.created_utc,
@@ -83,9 +83,11 @@ plotly.tools.set_credentials_file(username='reddit_unlocked', api_key='gfnXKc7Jv
 import plotly.plotly as py
 import plotly.graph_objs as go
 from plotly.graph_objs import *
-#takes a dictionary of dictionaries of keywords from body text as input and returns the url for the plotly html embedding of
-#scatterplot made from the keywords and their attributes
-#'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
+
+
+# takes a dictionary of dictionaries of keywords from body text as input and returns the url for the plotly html embedding of
+# scatterplot made from the keywords and their attributes
+# 'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
 
 
 def body_to_graph(words = {}, subreddit = str):
@@ -145,7 +147,7 @@ def body_to_graph(words = {}, subreddit = str):
                 )
             )
         ]),
-        title = 'Stats of top reddit/r/' + subreddit + ' keywords',
+        title = 'Stats of top reddit /r/' + subreddit + ' keywords',
         yaxis = dict(
             title = 'Subjectivity',
             ticks = 5,

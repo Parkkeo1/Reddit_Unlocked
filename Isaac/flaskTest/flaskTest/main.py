@@ -10,11 +10,15 @@
 
 
 from flask import Flask, request, render_template, redirect, url_for, session
+from flask_session import Session
 from run import display_praw, stats_praw, body_to_graph, get_keyword_dict
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '\x00\xe3~\xa1\xfc.2\x86\xc8\xb1J\xd9\x8e@2\xaf\xcb\x99\x86\xce\xed\x0b\xc8\xe0'
+app.config['SECRET_KEY'] = 'insert super secret string here'
+SESSION_TYPE = 'filesystem'
+app.config.from_object(__name__)
+Session(app)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,11 +27,11 @@ def index():
         if 'basic-url' in request.form:
             name = request.form['basic-url']
             info = stats_praw(name)
+            session['info'] = info
             output = display_praw(name)
+            session['output'] = output
             keywords = get_keyword_dict(output)
             graph_url = body_to_graph(keywords, name)
-            session['info'] = info
-            session['output'] = output
             session['graph_url'] = graph_url
             return redirect(url_for('program', name=name))
         else:
@@ -54,9 +58,9 @@ def docs(section):
 
 @app.route('/program/<name>')
 def program(name):
-    output = session.get('output')
-    info = session.get('info')
-    graph_url = session.get('graph_url')
+    output = session['output']
+    info = session['info']
+    graph_url = session['graph_url']
     return render_template('program.html', name=name, output=output, info=info, graph_url=graph_url)
 
 
