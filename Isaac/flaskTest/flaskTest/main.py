@@ -25,7 +25,7 @@ def index():
             info = stats_praw(name)
             output = display_praw(name)
             keywords = get_keyword_dict(output)
-            graph_url = body_to_graph(keywords)
+            graph_url = body_to_graph(keywords, name)
             session['info'] = info
             session['output'] = output
             session['graph_url'] = graph_url

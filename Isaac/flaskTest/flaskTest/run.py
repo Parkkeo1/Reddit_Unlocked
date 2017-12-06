@@ -30,7 +30,7 @@ def display_praw(name):
     threads_df = threads_df[['Title', 'URL', 'Upvote Ratio (%)', 'Net Score', '# of Upvotes', '# of Downvotes',
                              'Post Date', 'Self Post?', 'Video Post?', 'Domain']]
 
-    for thread in subreddit.top('year', limit=15): # TODO: change limit number when actually deploying program. 15 is the testing number.
+    for thread in subreddit.hot(limit=5): # TODO: change limit number when actually deploying program. 15 is the testing number.
         if thread.is_video:
             continue
         if 'fb' in thread.url:
@@ -86,6 +86,7 @@ from plotly.graph_objs import *
 #takes a dictionary of dictionaries of keywords from body text as input and returns the url for the plotly html embedding of
 #scatterplot made from the keywords and their attributes
 #'Keyword','Occurences', 'Upvotes', 'Downvotes',  "Score", "Subjectivity", "Polarity", "Domain"
+
 
 def body_to_graph(words = {}, subreddit = str):
     """
@@ -156,7 +157,7 @@ def body_to_graph(words = {}, subreddit = str):
     )
     data = [trace1]
     fig = go.Figure(data = data, layout = layout)
-    url = py.plot(fig, filename = 'reddit plot')
+    url = py.plot(fig, filename='reddit plot', auto_open=False)
     return "" + url
 
 import operator
@@ -179,9 +180,9 @@ def get_keyword_dict(input_dict):
     for i in range(len(top10news_df)):
         if "self" in top10news_df.iloc[i]["Domain"]:
             continue
-        else if "youtube" in top10news_df.iloc[i]["Domain"]:
+        elif "youtube" in top10news_df.iloc[i]["Domain"]:
             continue
-        else if "imgur" in top10news_df.iloc[i]["Domain"]:
+        elif "imgur" in top10news_df.iloc[i]["Domain"]:
             continue
 
         myArticle = Article(top10news_df.iloc[i]['URL'])
