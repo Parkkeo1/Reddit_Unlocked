@@ -1,10 +1,1 @@
-Gary Braznichenko is a freshman studying computer science at the
-University of Illinois, Urbana-Champaign. During this project,
-Gary primarily worked on using PRAW to extract threads from reddit,
-organizing them using pandas, and data visualization using plot.ly.
-His first time working on an open source group project has made him 
-much more interested in working and potentially contributing to other
-projects involving data science and other topics in the future. He
-is eager to learn more about different aspects of data science,
-mathematics in computer science, and eventually an understanding of
-AI and ML.
+Gary Braznichenko is a freshman studying computer science at the University of Illinois, Urbana-Champaign. During this project, Gary primarily worked on using PRAW to extract threads from reddit, organizing them using pandas, and data visualization using plot.ly. His first time working on an open source group project has made him much more interested in working and potentially contributing to other projects involving data science and other topics in the future. He is eager to learn more about different aspects of data science, mathematics in computer science, and eventually an understanding of AI and ML.

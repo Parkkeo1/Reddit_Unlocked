@@ -30,7 +30,7 @@ def display_praw(name):
     threads_df = threads_df[['Title', 'URL', 'Upvote Ratio (%)', 'Net Score', '# of Upvotes', '# of Downvotes',
                              'Post Date', 'Self Post?', 'Video Post?', 'Domain']]
 
-    for thread in subreddit.top('week', limit=100): # TODO: change limit number when actually deploying program. 15 is the testing number.
+    for thread in subreddit.top('week', limit=50): # TODO: change limit number when actually deploying program. 15 is the testing number.
         if thread.is_video:
             continue
         if 'fb' in thread.url:
