@@ -4,3 +4,5 @@ A program for analyzing & visualizing data pulled from the Reddit API and scrape
 Pitch Powerpoint: http://bit.ly/2xidFrv
 
 Goals Checklist/Process Outline: http://bit.ly/2h3Ieex
+
+Documentation for the entire project will be on the website when it is deployed (working on that atm).
