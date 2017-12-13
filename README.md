@@ -19,9 +19,13 @@ According to Alexa, Reddit is the 5th most visited website in the United States 
 # The reddit_unlocked Group
 
 Isaac - Data Extraction & Website & Docs
+
 Jayam - Data Analysis
+
 Gary - Data Visualization
+
 Ben - Website/Program Deployment to Heroku
+
 
 
 # Libraries We Used
