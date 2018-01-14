@@ -12,6 +12,7 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from flask_session import Session
 from run import display_praw, stats_praw, body_to_graph, get_keyword_dict
+import webbrowser
 
 
 app = Flask(__name__)
