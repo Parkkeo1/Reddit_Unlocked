@@ -33,4 +33,4 @@ The collected thread data serves as the basis for our data analysis. Also, the w
 
 ![Example of Trend Graph](https://github.com/RedditUnlocked/Reddit_Unlocked/blob/master/example.png?raw=true)
 
-Each colored bubble can be hovered over to show which keyword it represents.
+Each colored bubble can be hovered over to show which keyword it represents. Since the above is only a static image, this example plot can be viewed [here.](https://plot.ly/~reddit_unlocked/100)
