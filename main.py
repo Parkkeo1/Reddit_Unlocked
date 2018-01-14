@@ -70,7 +70,8 @@ def examples():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    webbrowser.open_new('http://127.0.0.1:5000')
+    app.run(debug=False)
 
 
 # Use url_for method for links in the webpage; url_for generates URL
