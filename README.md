@@ -31,4 +31,4 @@ Thanks to Reddit's voting feature, the best first step to gaining insight about 
 
 The collected thread data serves as the basis for our data analysis. Also, the webscraping algorithm crawls links to news articles from Reddit posts for more text. The keyword extraction and sentiment analysis algorithms are run on the compiled text data to generate a list of the most occurring/popular important keywords with corresponding sentiment values (polarity and subjectivity) attached to each keyword. Finally, a graph that acccounts for all of the resulting data (frequency, sentiment, upvotes, etc) is generated for the user.
 
-![Example of Trend Graph](Reddit_Unlocked/example.png)
+![Example of Trend Graph](https://github.com/RedditUnlocked/Reddit_Unlocked/blob/master/example.png?raw=true)
