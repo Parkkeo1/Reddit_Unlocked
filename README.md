@@ -1,17 +1,13 @@
 # Reddit_Unlocked: A Reddit-cal Analysis of The Web
 A program for analyzing & visualizing data pulled from the Reddit API and scraped from news articles.
 
-This repository contains the final, working version source code for the reddit_unlocked project (and its website)
-
-Documentation for the entire project will be on the website when it is deployed (working on that atm).
-
 
 ### What is Reddit_Unlocked?
 
 Reddit_Unlocked is a program based primarily on Python that analyzes & visualizes data pulled from the Reddit API and scraped from news articles. Our program implements various libraries, such as Newspaper and PRAW, to gather insight about the popular types of content and trends on Reddit.
 
 
-### More Details: The Why
+### The Why
 
 According to Alexa, Reddit is the 5th most visited website in the United States (and 8th in the world). As a social news aggregation, web content rating, and discussion website, Reddit represents a very significant portion of America's population of internet users. As evidenced by Reddit's higher-than-most typical per-user visit time of almost 16 minutes per day (compared to 10 minutes for Facebook and 6 for Twitter), Reddit tends to pull in users who are more likely to spend their time engaging in longer and thorough discussions to express their opinions and ideas. 
 
@@ -26,7 +22,7 @@ Jayam - Data Analysis
 
 Gary - Data Visualization
 
-Ben - Website/Program Deployment to Heroku
+Ben - Program Deployment to Heroku
 
 
 ### Libraries We Used
