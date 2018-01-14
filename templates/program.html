@@ -1,0 +1,74 @@
+{%  extends 'layout.html' %}
+
+<!-- TODO: Implement displaying graphs -->
+<!-- TODO: Things to display on page that I can think of rn: Table, Graphs, Subreddit Info... -->
+
+{% block body %}
+    {% set ellip = "..." %}
+    <div class="container justify-content-sm-start ">
+        <div class="jumbotron pt-5 pb-0" style="background-color: #ffffff;">
+            <h2 class="text-center">You chose to analyze /r/{{ name }}. Here are the results.</h2>
+            <hr style="background-color: #FF5700;">
+            <p class="text-center">Have a look at what's popular and trending in this section of the internet!</p>
+        </div>
+    </div>
+    <div class="container justify-content-sm-start">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card my-4">
+                    <div class="card-header">
+                        Background statistics for /r/{{ name }}
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ info['Title'] }}</h4>
+                        <p class="card-text my-2">Created: {{ info['Creation Date'] }}</p>
+                        <p class="card-text my-2">Subscriber Count: {{ info['Subscriber Count'] }}</p>
+                        <p class="card-text mt-2 mb-3">Currently Active Users: {{ info['Current Users'] }}</p>
+                        <a href="https://www.reddit.com/r/{{ name }}" class="btn btn-primary">Visit /r/{{ name }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 my-3 ml-4 d-flex align-items-center">
+                <img src="{{ info['Icon'] }}" class="img-rounded">
+            </div>
+        </div>
+    </div>
+    <div class="container justify-content-sm-start">
+        <table class="table table-hover mt-4">
+          <caption>The top 10 threads from /r/{{ name }} in the past week, sorted by net score. Click on the URLs to see what made them popular.</caption>
+          <thead class="thead text-white" style="background-color: #FF5700;">
+            <tr>
+              <th class="text-center align-middle" scope="col">#</th>
+              <th class="text-center align-middle" scope="col">Title</th>
+              <th class="text-center align-middle" scope="col">URL</th>
+              <th class="text-center align-middle" scope="col">Upvote %</th>
+              <th class="text-center align-middle" scope="col">Net Score</th>
+              <th class="text-center align-middle" scope="col">Date Posted</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in output[0:10] %}
+            <tr>
+              <th class="text-center align-middle" scope="row">{{ loop.index }}</th>
+              <td class="align-middle">{{ (entry['Title'][0:30]) + ellip }}</td>
+              <td class="align-middle"><a class="btn btn-primary btn-sm" href={{ entry['URL'] }}>{{ (entry['URL'][8:40]) + ellip }}</a></td>
+              <td class="text-center align-middle">{{ entry['Upvote Ratio (%)'] }}</td>
+              <td class="text-center align-middle">{{ entry['Net Score'] }}</td>
+              <td class="text-center align-middle">{{ entry['Post Date'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div class="container justify-content-sm-center text-center">
+        <div class="jumbotron pt-5 pb-0" style="background-color: #ffffff;">
+            <h4 class="text-center">The sentiment analysis graph below displays the most popular keywords from /r/{{ name }} in the past week.</h4>
+            <hr style="background-color: #FF5700;">
+            <p class="text-center">It's interactive- you can hover over the bubbles, zoom in, or even view this chart on Plotly.</p>
+        </div>
+    </div>
+    <div>
+        <a href="{{ graph_url }}/?share_key=GsMckagwOL2So6dBd6t0Al" target="_blank" title="reddit plot" style="display: block; text-align: center;"><img src="https://plot.ly/~reddit_unlocked/100.png?share_key=GsMckagwOL2So6dBd6t0Al" alt="reddit plot" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <script data-plotly="reddit_unlocked:100" sharekey-plotly="GsMckagwOL2So6dBd6t0Al" src="https://plot.ly/embed.js" async></script>
+    </div>
+{% endblock %}

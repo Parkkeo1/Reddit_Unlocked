@@ -1,0 +1,67 @@
+{%  extends 'layout.html' %}
+
+<!-- TODO: implement bootstrap cards for team and tools pages under docs section -->
+
+{% block body %}
+    <div class="container justify-content-sm-start ">
+        <div class="jumbotron pt-5 pb-0" style="background-color: #ffffff;">
+            <h2 class="text-center">We're a group of Freshman CS majors at UIUC.</h2>
+            <hr style="background-color: #FF5700;">
+            <p class="text-center">But our class standings are higher :)</p>
+        </div>
+    </div>
+    <div class="container justify-content-start py-4 px-5">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-isaac-list" data-toggle="list" href="#list-isaac" role="tab" aria-controls="isaac">Keon (Isaac) Park</a>
+                    <a class="list-group-item list-group-item-action" id="list-jayam-list" data-toggle="list" href="#list-jayam" role="tab" aria-controls="jayam">Jayam Shah</a>
+                    <a class="list-group-item list-group-item-action" id="list-gary-list" data-toggle="list" href="#list-gary" role="tab" aria-controls="gary">Gary Braznichenko</a>
+                    <a class="list-group-item list-group-item-action" id="list-ben-list" data-toggle="list" href="#list-ben" role="tab" aria-controls="ben">Ben Vacek</a>
+{#                    <a class="list-group-item list-group-item-action" id="list-keshav-list" data-toggle="list" href="#list-keshav" role="tab" aria-controls="keshav">Keshav Shivam</a>#}
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-isaac" role="tabpanel" aria-labelledby="list-isaac-list">
+                        <div class="d-flex flex-column justify-content-start">
+                            <div class="p-3">
+                                <h4>Isaac - Data Extraction & Website</h4>
+                                <p class="pt-1">Hi! I'm Keon Park, a freshman CS major at UIUC. I often go by my english name, Isaac. As project lead, I managed many aspects of Reddit_Unlocked. As a "middle-end" developer, I worked on both front-end and back-end. Initially, I primarily worked on collecting & organizing information from Reddit. Later in the project, I integrated the back-end and front-end into a dynamic web-based program using Flask. I created this website mainly using Bootstrap, but I'm happy to say I've recently been learning more HTML and custom CSS while building my personal website, which is linked below and has more information about me. Thanks for reading!</p>
+                                <a href="https://parkkeo1.github.io/" target="_blank">Personal Website & Contact Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-jayam" role="tabpanel" aria-labelledby="list-jayam-list">
+                        <div class="d-flex flex-column justify-content-start">
+                            <div class="p-3">
+                                <h4>Jayam - Data Analysis</h4>
+                                <p class="pt-1">Jayam Shah is an undergrad at UIUC studying Computer Science. He is a member of the university's iRobotics organization, working with the Class of 2021 Combotics team where he builds battle-ready robots. On the programming side, he enjoys working on data-driven projects and backend development. He aspires to pursue studies in artificial intelligence and machine learning applications.</p>
+                                <a href="test" target="_blank">Personal Website & Contact Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-gary" role="tabpanel" aria-labelledby="list-gary-list">
+                        <div class="d-flex flex-column justify-content-start">
+                            <div class="p-3">
+                                <h4>Gary - Data Visualization</h4>
+                                <p class="pt-1">Gary Braznichenko is a freshman studying computer science at the University of Illinois, Urbana-Champaign. In this project, Gary worked on using PRAW to extract threads from reddit, organizing them using pandas, and visualizing data using plot.ly. His first time working on an open source group project has made him much more interested in working and potentially contributing to other projects involving data science and other topics in the future. He is eager to learn more about different aspects of data science, mathematics in computer science, and eventually an understanding of AI and ML.</p>
+                                <a href="test" target="_blank">Personal Website & Contact Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-ben" role="tabpanel" aria-labelledby="list-ben-list">
+                        <div class="d-flex flex-column justify-content-start">
+                            <div class="p-3">
+                                <h4>Ben - Database & Deployment</h4>
+                                <p class="pt-1">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+                                <a href="http://benjaminvacek.com/" target="_blank">Personal Website & Contact Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
