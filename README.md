@@ -15,8 +15,6 @@ Jayam - Data Analysis (Keyword Extraction + Sentiment Analysis)
 
 Gary - Data Visualization (Comprehensive Visual Overviews of Trend Analyses)
 
-Ben - Deployment to Heroku (?)
-
 
 ### The Why
 
